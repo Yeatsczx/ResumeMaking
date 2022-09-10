@@ -5,7 +5,9 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
     alias: {
+      '@assets': path.join(__dirname, '../', 'assets/'),
       '@src': path.join(__dirname, '../', 'app/renderer'),
+      '@common': path.join(__dirname, '../', 'app/renderer/common'),
     },
   },
   module: {
@@ -18,16 +20,18 @@ module.exports = {
         },
       },
       {
-        test: /\.(jpg|png|jpeg|gif)$/,
+        test: /\.(jpg|png|jpeg|gif|svg)$/,
         use: [
           {
             loader: 'file-loader',
             options: {
               name: '[name]_[hash].[ext]',
               outputPath: 'images/',
+              esModule: false
             },
           },
         ],
+        type: 'javascript/auto',
       },
     ],
   },

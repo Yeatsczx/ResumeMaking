@@ -1,9 +1,13 @@
-// renderer/container/root/index.tsx
 import React from 'react';
-import './index.less';
+import './index.css';
+import logo from './mo.svg';
+import { shell } from 'electron';
+import { useNavigate } from 'react-router';
+// import { isHttpOrHttpsUrl } from '@common/utils/router';
 
 function Root() {
-    return <div>我是首页</div>;
+    return (
+        <div></div>
+    );
 }
 export default Root;
-
