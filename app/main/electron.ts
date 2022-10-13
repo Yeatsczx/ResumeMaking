@@ -20,7 +20,7 @@ function createWindow() {
     },
   });
 
-  if (isDev()) {
+  if (!isDev()) {
     // 👇 看到了吗，在开发环境下，我们加载的是运行在 7001 端口的 React
     mainWindow.loadURL(`http://127.0.0.1:7001`);
   } else {
@@ -30,7 +30,11 @@ function createWindow() {
 
 app.whenReady().then(() => {
   createWindow();
-  app.on('activate', function () {
-    if (BrowserWindow.getAllWindows().length === 0) createWindow();
-  });
-});
+  app.on('activate', () => {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow()
+  })
+  app.on('window-all-closed', () => {
+    if (process.platform !== 'darwin') app.quit()
+  })
+})
+

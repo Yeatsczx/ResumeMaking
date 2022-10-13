@@ -2,6 +2,7 @@ const path = require('path');
 const webpackMerge = require('webpack-merge');
 const baseConfig = require('./webpack.base.js');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { spawn } = require('child_process');
 
 const devConfig = {
@@ -25,6 +26,24 @@ const devConfig = {
         exclude: /node_modules/,
         use: [
           'style-loader',
+          'css-loader',
+          // {
+          //   loader: 'css-loader',
+          //   options: {
+          //     modules: {
+          //       localIdentName: '[name]__[local]__[hash:base64:5]',
+          //     },
+          //   },
+          // },
+          'postcss-loader',
+          'less-loader',
+        ],
+      },
+      {
+        test: /\.s[ac]ss$/,
+        exclude: /node_modules/,
+        use: [
+          'style-loader',
           {
             loader: 'css-loader',
             options: {
@@ -34,30 +53,30 @@ const devConfig = {
             },
           },
           'postcss-loader',
-          'less-loader',
+          'sass-loader',
         ],
       },
     ],
   },
   target: 'electron-renderer',
   devtool: 'inline-source-map',
-  devServer: {
-    contentBase: path.join(__dirname, '../dist'),
-    compress: true,
-    host: '127.0.0.1', // webpack-dev-server启动时要指定ip，不能直接通过localhost启动，不指定会报错
-    port: 7001, // 启动端口为 7001 的服务
-    hot: true,
-    before() {
-      // 启动渲染进程后执行主进程打包
-      console.log('start main process...');
-      spawn('npm', ['run', 'start:main'], { // 相当于命令行执行npm run dev-main
-        shell: true,
-        env: process.env,
-        stdio: 'inherit'
-      }).on('close', code => process.exit(code))
-        .on('error', spawnError => console.error(spawnError));
-    }
-  },
+  // devServer: {
+  //   contentBase: path.join(__dirname, '../dist'),
+  //   compress: true,
+  //   host: '127.0.0.1', // webpack-dev-server启动时要指定ip，不能直接通过localhost启动，不指定会报错
+  //   port: 7001, // 启动端口为 7001 的服务
+  //   hot: true,
+  //   before() {
+  //     // 启动渲染进程后执行主进程打包
+  //     console.log('start main process...');
+  //     spawn('npm', ['run', 'start:main'], { // 相当于命令行执行npm run dev-main
+  //       shell: true,
+  //       env: process.env,
+  //       stdio: 'inherit'
+  //     }).on('close', code => process.exit(code))
+  //       .on('error', spawnError => console.error(spawnError));
+  //   }
+  // },
   plugins: [
     new HtmlWebpackPlugin({
       // 👇 以此文件为模版，自动生成 HTML
@@ -65,6 +84,7 @@ const devConfig = {
       filename: path.resolve(__dirname, '../dist/index.html'),
       chunks: ['index'],
     }),
+    new CleanWebpackPlugin(),
   ],
 };
 

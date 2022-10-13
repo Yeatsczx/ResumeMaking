@@ -1,9 +1,0 @@
-div {
-    width: 300px;
-    height: 300px;
-    background: linear-gradient(-75deg, #acb9f9, #6060ba);
-    mask: url(./mo.svg), linear-gradient(#fff, #fff);
-    mask-repeat: no-repeat;
-    mask-position: center center;
-    -webkit-mask-composite: xor;
-}

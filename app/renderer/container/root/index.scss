@@ -1,0 +1,219 @@
+* {
+    margin: 0;
+}
+
+.czx {
+    display: grid;
+    /* 1fr表示100%剩余位置 */
+    grid-template-rows: 1fr auto;
+    grid-template-areas: "main""footer";
+    overflow-x: hidden;
+    background: #F5F7FA;
+    min-height: 100vh;
+    font-family: "Open Sans", sans-serif;
+
+    .main {
+        position: relative;
+
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #26b4f5;
+
+            .title {
+                font-size: 24px;
+                line-height: 36px;
+                letter-spacing: -16px;
+                animation: move-letter 4s linear forwards;
+            }
+
+            .tips {
+                font-size: 16px;
+                line-height: 24px;
+                margin-top: 24px;
+                letter-spacing: -16px;
+                animation: move-letter 4s linear forwards;
+            }
+
+            .action {
+                width: 300px;
+                margin: 0 auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 24px;
+
+                .item {
+                    width: 25%;
+                    border: none;
+                    margin: 20px;
+                    border-radius: 5px;
+                    font-weight: 500;
+                    background: transparent;
+                    color: #000;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    position: relative;
+                    display: inline-block;
+                    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+                        7px 7px 20px 0px rgba(0, 0, 0, .1),
+                        4px 4px 5px 0px rgba(0, 0, 0, .1);
+                    outline: none;
+
+                    &:after {
+                        position: absolute;
+                        content: "";
+                        width: 0;
+                        height: 100%;
+                        top: 0;
+                        left: 0;
+                        direction: rtl;
+                        z-index: -1;
+                        box-shadow:
+                            -7px -7px 20px 0px #fff9,
+                            -4px -4px 5px 0px #fff9,
+                            7px 7px 20px 0px #0002,
+                            4px 4px 5px 0px #0001;
+                        transition: all 0.3s ease;
+                    }
+
+                    &:hover {
+                        color: #26b4f5;
+                    }
+
+                    &:hover:after {
+                        left: auto;
+                        right: 0;
+                        width: 100%;
+                    }
+
+                    &:active {
+                        top: 2px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.czx .footer {
+    z-index: 1;
+    display: grid;
+    position: relative;
+    grid-area: footer;
+    min-height: 12rem;
+    background: #26b4f5;
+
+    .copyright {
+        width: 100%;
+        position: absolute;
+        bottom: 16px;
+        opacity: 0.6;
+        font-size: 14px;
+        text-align: center;
+        line-height: 24px;
+    }
+}
+
+.czx .footer .bubbles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1rem;
+    background: #26b4f5;
+    /* 将滤镜放置在父元素，是因为如果放在子元素则不能体现出小球相互之前的作用，只会作用于个体本身 */
+    filter: url("#blob");
+}
+
+
+@for $i from 1 through 128 {
+    .czx .footer .bubbles .bubble:nth-child(#{$i}) {
+        $duration: #{2+random() * 2}s;
+        $delay: #{-1 * (2 + random() * 2)}s;
+        position: absolute;
+        /* 50%指的是屏幕 */
+        left: #{-5+random()*110+'%'};
+        background: #26b4f5;
+        border-radius: 100%;
+        // 注意需要让气泡大小变化和移动变化的时间一致，否则会出现气泡瞬间消失的情况
+        -webkit-animation: bubble-size $duration ease-in infinite $delay,
+            bubble-move $duration ease-in infinite $delay;
+        animation: bubble-size $duration ease-in infinite $delay,
+            bubble-move $duration ease-in infinite $delay;
+        /* 50、100%指的是本身,相对父元素移动,设置位置 */
+        transform: translate(-50%, 100%);
+    }
+}
+
+@-webkit-keyframes bubble-size {
+
+    0%,
+    75% {
+        width: 4rem;
+        height: 4rem;
+    }
+
+    100% {
+        width: 0rem;
+        height: 0rem;
+    }
+}
+
+@keyframes bubble-size {
+
+    0%,
+    75% {
+        width: 4rem;
+        height: 4rem;
+    }
+
+    100% {
+        width: 0rem;
+        height: 0rem;
+    }
+}
+
+@-webkit-keyframes bubble-move {
+    0% {
+        bottom: -4rem;
+    }
+
+    100% {
+        bottom: 10rem;
+    }
+}
+
+@keyframes bubble-move {
+    0% {
+        bottom: -4rem;
+    }
+
+    100% {
+        bottom: 10rem;
+    }
+}
+
+@keyframes move-letter {
+    0% {
+        opacity: 0;
+        letter-spacing: -16px;
+        filter: blur(10px);
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    50% {
+        filter: blur(5px);
+    }
+
+    100% {
+        letter-spacing: 0px;
+        filter: blur(0px);
+    }
+}
