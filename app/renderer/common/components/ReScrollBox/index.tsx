@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
-import CSSModules from 'react-css-modules';
-import styles from './index.scss';
+import './index.scss';
 
 interface IProps {
   /**
@@ -16,32 +15,21 @@ interface IProps {
    */
   style?: React.CSSProperties;
   /**
-   * @description 最内部的div样式
-   */
-  innerStyle?: React.CSSProperties;
-  /**
    * @description 开启了滚动事件之后，回调得到滚动的top
    */
   onScrollTop?: (scrollTop: number) => void;
 }
-const ReScrollBox: FC<IProps> = ({ children, maxHeight = 200, style = {}, innerStyle = {}, onScrollTop }) => {
+const ReScrollBox: FC<IProps> = ({ children, maxHeight = 200, style = {}, onScrollTop }) => {
   function onScroll(e: any) {
     const _event = e.target || e.currentTarget;
-    onScrollTop && onScrollTop(_event.scrollTop);
+    onScrollTop?.(_event.scrollTop);
   }
-  let _style = { ...style };
-  if (maxHeight) {
-    _style = { ..._style, maxHeight: `${maxHeight}px` };
-  }
+  let _style = maxHeight ? { ...style, maxHeight: `${maxHeight}px` } : { ...style };
   return (
-    <div className="scroll-box-outer" style={_style} onScroll={onScroll}>
-      <div className="scroll-box-hidden" style={{ maxHeight: `${maxHeight}px` }}>
-        <div className="scroll-box-inter" style={innerStyle}>
-          {children}
-        </div>
-      </div>
+    <div className="scroll-box-hidden" style={_style} onScroll={onScroll}>
+      {children}
     </div>
   );
 };
 
-export default CSSModules(ReScrollBox, styles);
+export default ReScrollBox;

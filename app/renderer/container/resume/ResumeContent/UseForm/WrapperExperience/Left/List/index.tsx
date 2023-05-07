@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
-import CSSModules from 'react-css-modules';
-import styles from './index.scss';
+import './index.scss';
 import { formatToString } from '@common/utils/time';
 import DeleteIcon from '@assets/icon/delete.png';
 import { AdapterExperienceType } from '../../adapter';
@@ -66,4 +65,4 @@ const List: FC<IListProps> = ({ index, experienceList, onDelete, onChange }) => 
   );
 };
 
-export default CSSModules(List, styles, { allowMultiple: true });
+export default List;

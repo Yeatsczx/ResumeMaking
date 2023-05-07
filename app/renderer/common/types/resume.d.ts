@@ -173,11 +173,9 @@ declare namespace TSResume {
     base: Base;
     contact: Contact;
     work: Work;
-    hobby: string;
     skill: string;
     skillList: string[];
     evaluation: string;
-    evaluationList: string[];
     certificate: string;
     certificateList: string[];
     schoolExperience?: SchoolExperience[];

@@ -3,8 +3,7 @@
  * @author yeats
  */
 import { FC } from 'react';
-import styles from './index.scss';
-import CSSModules from 'react-css-modules';
+import './index.scss';
 
 const Skill: FC = () => {
   return (
@@ -25,4 +24,4 @@ const Skill: FC = () => {
   );
 };
 
-export default CSSModules(Skill, styles);
+export default Skill;

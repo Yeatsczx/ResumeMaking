@@ -4,8 +4,7 @@
  */
 import { FC } from 'react';
 import { useSelector } from 'react-redux';
-import styles from './index.scss';
-import CSSModules from 'react-css-modules';
+import './index.scss';
 
 const Work: FC = () => {
   const workExperience: TSResume.WorkExperience[] = useSelector((state: any) => state.resumeModel.workExperience);
@@ -36,4 +35,4 @@ const Work: FC = () => {
   );
 };
 
-export default CSSModules(Work, styles);
+export default Work;

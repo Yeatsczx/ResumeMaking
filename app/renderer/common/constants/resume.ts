@@ -9,7 +9,6 @@ export const RESUME_TOOLBAR_MAPS = {
   certificate: 'certificate', // 获奖证书
   evaluation: 'evaluation', // 个人评价
   skill: 'skill', // 技能清单
-  test: 'test', // 测试用例
 };
 
 // TSResume.SliderItem[]数组中对象类型的定义,理论上该使用type定义TSResume.SliderItem
@@ -23,7 +22,7 @@ const RESUME_TOOLBAR_LIST: TSResume.SliderItem[] = [
   {
     key: RESUME_TOOLBAR_MAPS.education,
     name: '教育信息',
-    require: false,
+    require: true,
     summary: '介绍你的学校和专业信息',
   },
   {
@@ -65,7 +64,7 @@ const RESUME_TOOLBAR_LIST: TSResume.SliderItem[] = [
   {
     key: RESUME_TOOLBAR_MAPS.evaluation,
     name: '个人评价',
-    require: false,
+    require: true,
     summary: '低调夸一夸自己有什么亮点',
   },
   {
@@ -73,12 +72,6 @@ const RESUME_TOOLBAR_LIST: TSResume.SliderItem[] = [
     name: '技能清单',
     require: false,
     summary: '展示具备的技能，突出你的能力',
-  },
-  {
-    key: RESUME_TOOLBAR_MAPS.test,
-    name: '测试用例',
-    require: true,
-    summary: '测试用例，一键覆盖',
   },
 ];
 export default RESUME_TOOLBAR_LIST;

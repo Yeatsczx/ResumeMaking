@@ -2,8 +2,7 @@
  * @description 个人评价Form
  */
 import { FC } from 'react';
-import CSSModules from 'react-css-modules';
-import styles from './index.scss';
+import './index.scss';
 import ReModal from '@common/components/ReModal';
 import ReInput from '@common/components/ReInput';
 import { useSelector } from 'react-redux';
@@ -36,6 +35,8 @@ const Evaluation: FC<IProps> = ({ onClose }) => {
             <ReInput
               type="textarea"
               onChange={(e) => {
+                console.log(1);
+
                 updateResumeHook<string>('evaluation', e.target.value);
               }}
               rows={5}
@@ -43,7 +44,6 @@ const Evaluation: FC<IProps> = ({ onClose }) => {
               placeholder="夸一夸自己有什么亮点"
               allowClear={true}
             />
-            <div styleName="tips"> * 可通过 | 分割</div>
           </div>
         </div>
       </div>
@@ -51,4 +51,4 @@ const Evaluation: FC<IProps> = ({ onClose }) => {
   );
 };
 
-export default CSSModules(Evaluation, styles, { allowMultiple: true });
+export default Evaluation;

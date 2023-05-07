@@ -2,8 +2,7 @@
  * @description 弹窗组件
  */
 import { FC } from 'react';
-import CSSModules from 'react-css-modules';
-import styles from './index.scss';
+import './index.scss';
 import ReButton from '@src/common/components/ReButton';
 import { IConfirmModal } from '../types';
 
@@ -60,4 +59,4 @@ const ReConfirm: FC<IConfirmModal> = ({ title, width, className, description, re
   );
 };
 
-export default CSSModules(ReConfirm, styles);
+export default ReConfirm;

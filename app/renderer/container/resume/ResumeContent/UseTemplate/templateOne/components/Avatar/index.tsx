@@ -1,10 +1,9 @@
 /**
  * @desc 头像
- * @author pengdaokuan
+ * @author Yeats
  */
 import { FC } from 'react';
-import styles from './index.scss';
-import CSSModules from 'react-css-modules';
+import './index.scss';
 import { useSelector } from 'react-redux';
 import uploadIcon from '@assets/icon/upload.png';
 import ReButton from '@common/components/ReButton';
@@ -45,4 +44,4 @@ const Avatar: FC = () => {
   );
 };
 
-export default CSSModules(Avatar, styles);
+export default Avatar;

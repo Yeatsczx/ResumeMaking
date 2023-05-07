@@ -40,8 +40,8 @@
   }
 }
 
-// <1272px尺寸适配，但是因为滚动条原因，导致会出现小屏时不出现 rect-menu 不显示情况
-@media screen and (max-width: 1200px) {
+// <1360px尺寸适配，但是因为滚动条原因，导致会出现小屏时不出现 rect-menu 不显示情况
+@media screen and (max-width: 1360px) {
   :global {
     .parent-box {
       .left-box {

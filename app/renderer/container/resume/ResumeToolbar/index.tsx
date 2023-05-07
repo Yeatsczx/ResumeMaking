@@ -1,11 +1,9 @@
 import { FC, useEffect, useState } from 'react';
-import CSSModules from 'react-css-modules';
-import styles from './index.scss';
+import './index.scss';
 import ReScrollBox from '@src/common/components/ReScrollBox';
 import RESUME_TOOLBAR_LIST from '@common/constants/resume';
 import { onAddToolbar, onDeleteToolbar } from './utils';
 import { useDispatch } from 'react-redux';
-import Messager, { MESSAGE_EVENT_NAME_MAPS } from '@common/messager';
 
 const ResumeToolbar: FC = () => {
   const dispatch = useDispatch();
@@ -43,7 +41,6 @@ const ResumeToolbar: FC = () => {
     const nextUnAddSliderList = onDeleteToolbar(unAddToolbarList, moduleToolbar);
     setUnAddToolbarList(nextUnAddSliderList);
     changeResumeToolbarKeys(nextAddSliderList.map((s: TSResume.SliderItem) => s.key));
-    console.log(123);
   };
 
   // 删除模块
@@ -70,9 +67,13 @@ const ResumeToolbar: FC = () => {
                     styleName="box"
                     key={addSlider.key}
                     onClick={() => {
-                      Messager.send(MESSAGE_EVENT_NAME_MAPS.OPEN_FORM_MODAL, {
-                        form_name: addSlider.key,
-                      });
+                      document.dispatchEvent(
+                        new CustomEvent('showFormModal', {
+                          detail: {
+                            payload: addSlider.key,
+                          },
+                        })
+                      );
                     }}
                   >
                     <div styleName="info">
@@ -84,11 +85,11 @@ const ResumeToolbar: FC = () => {
                       {addSlider.require && <div styleName="tips">必选项</div>}
                       {!addSlider.require && (
                         <div styleName="action">
-                          <i styleName="edit" onClick={(e: React.MouseEvent) => {}} />
+                          <i styleName="edit" onClick={(e: React.MouseEvent) => { }} />
                           <i
                             styleName="delete"
                             onClick={(e: React.MouseEvent) => {
-                              e.stopPropagation && e.stopPropagation();
+                              e?.stopPropagation();
                               onDeleteSliderAction(addSlider);
                             }}
                           />
@@ -128,4 +129,4 @@ const ResumeToolbar: FC = () => {
     </div>
   );
 };
-export default CSSModules(ResumeToolbar, styles, { allowMultiple: true });
+export default ResumeToolbar;

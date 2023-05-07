@@ -1,10 +1,9 @@
 /**
  * @desc 头像
- * @author pengdaokuan
+ * @author Yeats
  */
 import { FC } from 'react';
-import styles from './index.scss';
-import CSSModules from 'react-css-modules';
+import './index.scss';
 import AvatarImage from '@assets/avatar.jpg';
 
 const Avatar: FC = () => {
@@ -17,4 +16,4 @@ const Avatar: FC = () => {
   );
 };
 
-export default CSSModules(Avatar, styles);
+export default Avatar;

@@ -4,8 +4,7 @@
  */
 import { FC } from 'react';
 import { useSelector } from 'react-redux';
-import styles from './index.scss';
-import CSSModules from 'react-css-modules';
+import './index.scss';
 
 const Skill: FC = () => {
   const skill: string = useSelector((state: any) => state.resumeModel.skill);
@@ -29,4 +28,4 @@ const Skill: FC = () => {
   );
 };
 
-export default CSSModules(Skill, styles);
+export default Skill;

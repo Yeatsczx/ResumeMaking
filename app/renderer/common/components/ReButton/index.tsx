@@ -3,8 +3,7 @@
  */
 import React, { FC } from 'react';
 import classnames from 'classnames';
-import CSSModules from 'react-css-modules';
-import styles from './index.scss';
+import './index.scss';
 
 export interface Button {
   /**
@@ -63,7 +62,7 @@ const ReButton: FC<Button> = ({
         'es-button-border': border,
       })}
       onClick={() => {
-        onClick && onClick();
+        onClick?.();
       }}
     >
       {children}
@@ -71,4 +70,4 @@ const ReButton: FC<Button> = ({
   );
 };
 
-export default CSSModules(ReButton, styles, { allowMultiple: true });
+export default ReButton;

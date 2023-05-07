@@ -1,6 +1,5 @@
 import { FC } from 'react';
-import CSSModules from 'react-css-modules';
-import styles from './index.scss';
+import './index.scss';
 import { AdapterExperienceType } from '../../adapter';
 
 interface IProps {
@@ -52,4 +51,4 @@ const Menu: FC<IProps> = ({ currentItem, isEdit, onCancelEditValue, onSaveEditVa
   );
 };
 
-export default CSSModules(Menu, styles, { allowMultiple: true });
+export default Menu;

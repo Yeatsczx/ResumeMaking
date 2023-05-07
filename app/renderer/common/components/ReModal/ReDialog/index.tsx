@@ -2,8 +2,7 @@
  * @description 弹窗组件
  */
 import { FC } from 'react';
-import CSSModules from 'react-css-modules';
-import styles from './index.scss';
+import './index.scss';
 import ReButton from '@src/common/components/ReButton';
 import { IDialogModal } from '../types';
 
@@ -66,4 +65,4 @@ const ReDialog: FC<IDialogModal> = ({
   );
 };
 
-export default CSSModules(ReDialog, styles);
+export default ReDialog;

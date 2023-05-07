@@ -1,14 +1,10 @@
 /*
  * @Description:
- * @Author: pengdaokuan
- * @LastEditors: pengdaokuan
- * @Date: 2021-06-25 08:56:12
- * @LastEditTime: 2021-06-25 09:10:36
+ * @Author: Yeats
  */
 import React, { FC } from 'react';
 import { shell } from 'electron';
-import styles from './index.scss';
-import CSSModules from 'react-css-modules';
+import './index.scss';
 import UseTemplateOne from '@src/container/templates/templateOne';
 import Footer from '../Footer';
 import ReScrollBox from '@common/components/ReScrollBox';
@@ -28,7 +24,7 @@ const LackDesc = React.memo(({ label }: { label: string }) => {
           size="middle"
           className="use-btn"
           onClick={() => {
-            shell.openExternal('https://github.com/PDKSophia/visResumeMook/issues/4');
+            shell.openExternal('https://github.com/Yeatsczx/ResumeMaking');
           }}
         >
           贡献模版
@@ -40,7 +36,7 @@ const LackDesc = React.memo(({ label }: { label: string }) => {
 
 const StaticResume: FC = () => {
   const HEADER_HEIGHT = 76; // 距离头部距离
-  const height = document.body.clientHeight;
+  const height = document.documentElement.clientHeight;
   const selectTemplate: TSTemplate.Item = useSelector((state: any) => state.resumeTemplateModel.selectTemplate);
 
   const isIncludeTemplate = VALID_TEMPLATE.includes(selectTemplate.templateIndex);
@@ -63,4 +59,4 @@ const StaticResume: FC = () => {
   );
 };
 
-export default CSSModules(StaticResume, styles);
+export default StaticResume;

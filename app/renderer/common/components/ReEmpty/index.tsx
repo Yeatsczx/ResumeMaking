@@ -1,6 +1,5 @@
-import { FC } from 'react';
-import CSSModules from 'react-css-modules';
-import styles from './index.scss';
+import React, { FC } from 'react';
+import './index.scss';
 export type SizeType = 'small' | 'big';
 
 interface IEmptyProps {
@@ -19,4 +18,4 @@ const Empty: FC<IEmptyProps> = ({ imgSrc, size = 'small', style, label }) => {
   );
 };
 
-export default CSSModules(Empty, styles);
+export default Empty;

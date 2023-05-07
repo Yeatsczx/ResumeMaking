@@ -1,4 +1,5 @@
 const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   resolve: {
@@ -9,9 +10,9 @@ module.exports = {
       '@common': path.join(__dirname, '../', 'app/renderer/common'),
     },
   },
-  output: {
-    clean: true,
-  },
+  // output: {
+  //   clean: true,
+  // },
   module: {
     rules: [
       {
@@ -21,18 +22,17 @@ module.exports = {
           loader: 'babel-loader',
         },
       },
-      {
-        test: /\.(jpg|png|jpeg|gif|svg)$/,
-        type: 'asset',
-        parser: {
-          dataUrlCondition: {
-            maxSize: 10 * 1024, // 小于10kb的图片会被base64处理
-          },
-        },
-        generator: {
-          filename: 'images/[name]_[hash].[ext]',
-        },
-      },
     ],
   },
+  plugins: [
+    // 通过该插件实现资源文件的拷贝
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, '../assets'),
+          to: path.resolve(__dirname, '../dist/assets'),
+        },
+      ],
+    }),
+  ],
 };

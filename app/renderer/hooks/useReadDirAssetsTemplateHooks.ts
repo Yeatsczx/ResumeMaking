@@ -1,9 +1,5 @@
 /*
  * @Description: 读取模版静态文件目录
- * @Author: pengdaokuan
- * @LastEditors: pengdaokuan
- * @Date: 2021-06-25 09:10:49
- * @LastEditTime: 2021-06-25 10:01:00
  */
 import fileAction from '@common/utils/file';
 import { useDispatch } from 'react-redux';
@@ -17,16 +13,16 @@ export default function () {
     getAppPath().then((appPath: string) => {
       // 2. 从assets读取模版图片信息，构造模版列表
       fileAction
-        .readDir(`${appPath}assets/template`)
+        .readDir(`${appPath}/assets/template`)
         .then(async (files: string[]) => {
           // 3. 构造模版列表
           if (files.length > 0) {
             let templateList: TSTemplate.Item[] = [];
-            for (let idx = 0; idx < files.length; idx++) {
-              const base64URL = await fileAction.read(`${appPath}assets/template/${files[idx]}`, 'base64');
+            for (let i = 0; i < files.length; i++) {
+              const base64URL = await fileAction.read(`${appPath}/assets/template/${files[i]}`, 'base64');
               templateList.push({
-                templateName: files[idx],
-                templateIndex: idx,
+                templateName: files[i],
+                templateIndex: i,
                 templateId: createUID(),
                 templateCover: `data:image/png;base64,${base64URL}`,
               });

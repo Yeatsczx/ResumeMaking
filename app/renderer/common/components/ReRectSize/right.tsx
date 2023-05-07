@@ -1,10 +1,3 @@
-/*
- * @Description:
- * @Author: pengdaokuan
- * @LastEditors: pengdaokuan
- * @Date: 2021-06-25 10:27:39
- * @LastEditTime: 2021-06-25 10:31:02
- */
 import React from 'react';
 
 interface IProps {

@@ -1,6 +1,5 @@
 import { FC } from 'react';
-import CSSModules from 'react-css-modules';
-import styles from './index.scss';
+import './index.scss';
 import ReInput from '@common/components/ReInput';
 import { AdapterExperienceType } from '../WrapperExperience/adapter';
 
@@ -88,4 +87,4 @@ const Form: FC<IProps> = ({ isDisable, currentItem, onChangeCurrentItem }) => {
     </div>
   );
 };
-export default CSSModules(Form, styles, { allowMultiple: true });
+export default Form;

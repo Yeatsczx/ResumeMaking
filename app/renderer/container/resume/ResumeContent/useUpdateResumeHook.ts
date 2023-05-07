@@ -12,7 +12,6 @@ function useUpdateResumeHook() {
   const updateContactHook = useUpdateContactHook();
   const updateWorkHook = useUpdateWorkHook();
   const updateEvaluationHook = useUpdateEvaluationHook();
-  const updateHobbyHook = useUpdateHobbyHook();
   const updateCertificateHook = useUpdateCertificateHook();
   const updateSkillHook = useUpdateSkillHook();
   const updateProjectExperience = useUpdateProjectExperience();
@@ -26,7 +25,6 @@ function useUpdateResumeHook() {
       if (keys[0] === 'contact') updateContactHook(keys[1], stateValue);
       if (keys[0] === 'work') updateWorkHook(keys[1], stateValue);
       if (keys[0] === 'evaluation') updateEvaluationHook(keys[0], stateValue);
-      if (keys[0] === 'hobby') updateHobbyHook(keys[0], stateValue);
       if (keys[0] === 'certificate') updateCertificateHook(keys[0], stateValue);
       if (keys[0] === 'skill') updateSkillHook(keys[0], stateValue);
       if (keys[0] === 'projectExperience') updateProjectExperience(keys[0], stateValue);
@@ -108,29 +106,6 @@ function useUpdateWorkHook() {
  * @description 修改个人评价（evaluation）
  */
 function useUpdateEvaluationHook() {
-  const dispatch = useDispatch();
-  return <T>(stateKey: string, stateValue: T) => {
-    let evaluationList = stateValue ? (stateValue as any).split('｜') : [];
-    dispatch({
-      type: 'resumeModel/changeModelList',
-      payload: [
-        {
-          key: stateKey,
-          values: stateValue,
-        },
-        {
-          key: 'evaluationList',
-          values: evaluationList,
-        },
-      ],
-    });
-  };
-}
-
-/**
- * @description 修改个人特长爱好（hobby）
- */
-function useUpdateHobbyHook() {
   const dispatch = useDispatch();
   return <T>(stateKey: string, stateValue: T) => {
     dispatch({

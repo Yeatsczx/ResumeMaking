@@ -2,8 +2,7 @@
  * @description 个人信息Form
  */
 import { FC } from 'react';
-import CSSModules from 'react-css-modules';
-import styles from './index.scss';
+import './index.scss';
 import ReModal from '@common/components/ReModal';
 import ReInput from '@common/components/ReInput';
 import { useSelector } from 'react-redux';
@@ -14,7 +13,6 @@ interface IProps {
 }
 const Personal: FC<IProps> = ({ onClose }) => {
   const updateResumeHook = useUpdateResumeHook();
-  const hobby: string = useSelector((state: any) => state.resumeModel.hobby);
   const base: TSResume.Base = useSelector((state: any) => state.resumeModel.base);
   return (
     <ReModal.Dialog
@@ -57,29 +55,9 @@ const Personal: FC<IProps> = ({ onClose }) => {
             />
           </div>
         </div>
-        <div styleName="flex">
-          <div styleName="left">
-            <span styleName="require" style={{ opacity: 0 }}>
-              *
-            </span>
-            爱 好 ：
-          </div>
-          <div styleName="right">
-            <ReInput
-              type="textarea"
-              onChange={(e) => {
-                updateResumeHook('hobby', e.target?.value || '');
-              }}
-              rows={5}
-              value={hobby || ''}
-              placeholder="你有什么特长爱好呢"
-              allowClear={true}
-            />
-          </div>
-        </div>
       </div>
     </ReModal.Dialog>
   );
 };
 
-export default CSSModules(Personal, styles, { allowMultiple: true });
+export default Personal;

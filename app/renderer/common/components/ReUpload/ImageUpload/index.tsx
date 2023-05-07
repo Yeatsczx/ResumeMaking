@@ -1,10 +1,9 @@
 /**
  * @description 图片上传组件，基于 Input 二次封装
- * @author {pengdaokuan}
+ * @author {Yeats}
  */
 import React, { FC } from 'react';
-import CSSModules from 'react-css-modules';
-import styles from './index.scss';
+import './index.scss';
 import Upload from '../Upload';
 
 interface IProps extends TSUpload.Input {
@@ -26,14 +25,14 @@ const ImageUpload: React.FC<IProps> = ({
   icon,
   text = '上传头像',
   preventInputManager = false,
-  onAfterClick = () => {},
+  onAfterClick = () => { },
   ...otherProps
 }) => {
   return (
     <div className="my_input_image_upload_wrapper" onClick={onAfterClick}>
       {!preventInputManager && (
         <div className="my_input_image_upload_input">
-          <Upload {...otherProps} onAfterClick={() => {}} style={{ width: '112px', height: '152px' }} />
+          <Upload {...otherProps} style={{ width: '112px', height: '152px' }} />
         </div>
       )}
       <div className="my_input_image_upload_box">
@@ -44,4 +43,4 @@ const ImageUpload: React.FC<IProps> = ({
   );
 };
 
-export default CSSModules(ImageUpload, styles);
+export default ImageUpload;

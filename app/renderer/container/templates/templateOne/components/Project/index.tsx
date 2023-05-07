@@ -1,12 +1,9 @@
 /**
  * @desc 项目经历
- * @author pengdaokuan
- * @createTime 2021-03-22
- * @lastModify 2021-03-22
+ * @author Yeats
  */
 import { FC } from 'react';
-import styles from './index.scss';
-import CSSModules from 'react-css-modules';
+import './index.scss';
 
 const Project: FC = () => {
   return (
@@ -43,4 +40,4 @@ const Project: FC = () => {
   );
 };
 
-export default CSSModules(Project, styles);
+export default Project;

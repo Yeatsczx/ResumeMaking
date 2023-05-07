@@ -1,10 +1,3 @@
-/*
- * @Description:
- * @Author: pengdaokuan
- * @LastEditors: pengdaokuan
- * @Date: 2021-06-25 09:49:01
- * @LastEditTime: 2021-06-25 09:58:06
- */
 declare namespace TSTemplate {
   export interface Item {
     /**

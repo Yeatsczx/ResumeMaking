@@ -1,11 +1,10 @@
 /**
  * @desc 联系方式
- * @author pengdaokuan
+ * @author Yeats
  */
 import { FC } from 'react';
 import { useSelector } from 'react-redux';
-import CSSModules from 'react-css-modules';
-import styles from '../../../styles/template-one.scss';
+import '../../../styles/template-one.scss';
 
 const Contact: FC = () => {
   const contact: TSResume.Contact = useSelector((state: any) => state.resumeModel.contact);
@@ -21,4 +20,4 @@ const Contact: FC = () => {
   );
 };
 
-export default CSSModules(Contact, styles);
+export default Contact;

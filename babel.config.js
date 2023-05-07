@@ -7,11 +7,23 @@ module.exports = {
   plugins: [
     '@babel/plugin-transform-runtime', // 方便使用 babel-runtime,自动引入所需polyfill
     [
-      '@babel/plugin-transform-modules-commonjs', // 将 ECMAScript modules 转成 CommonJS.
+      'react-css-modules',
       {
-        allowTopLevelThis: true,
-        lazy: true, // 延迟初始化依赖项,改善模块的初始加载时间
+        exclude: 'node_modules',
+        webpackHotModuleReloading: true,
+        generateScopedName: '[name]__[local]__[hash:base64:5]',
+        autoResolveMultipleImports: true,
+        filetypes: {
+          '.scss': { syntax: 'postcss-scss' },
+        },
       },
     ],
+    // [
+    //   '@babel/plugin-transform-modules-commonjs', // 将 ECMAScript modules 转成 CommonJS.
+    //   {
+    //     allowTopLevelThis: true,
+    //     lazy: true, // 延迟初始化依赖项,改善模块的初始加载时间
+    //   },
+    // ],
   ],
 };

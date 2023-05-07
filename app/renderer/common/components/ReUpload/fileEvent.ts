@@ -22,10 +22,6 @@ class FileEvent {
   public revokeFileBase64URL(base64URL: string) {
     window.URL.revokeObjectURL(base64URL);
   }
-
-  public upload() {}
-  public cancel() {}
-  public retry() {}
 }
 
 export default FileEvent;

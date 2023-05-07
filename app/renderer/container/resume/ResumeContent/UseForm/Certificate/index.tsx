@@ -2,8 +2,7 @@
  * @description 荣誉证书Form
  */
 import { FC } from 'react';
-import CSSModules from 'react-css-modules';
-import styles from './index.scss';
+import './index.scss';
 import ReModal from '@common/components/ReModal';
 import ReInput from '@common/components/ReInput';
 import { useSelector } from 'react-redux';
@@ -51,4 +50,4 @@ const Certificate: FC<IProps> = ({ onClose }) => {
   );
 };
 
-export default CSSModules(Certificate, styles, { allowMultiple: true });
+export default Certificate;

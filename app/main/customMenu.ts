@@ -10,13 +10,7 @@ const customMenu: (MenuItemConstructorOptions | MenuItem)[] = [
       {
         label: '源码',
         click: function () {
-          shell.openExternal('https://github.com/PDKSophia/visResumeMook');
-        },
-      },
-      {
-        label: '小册',
-        click: function () {
-          shell.openExternal('https://juejin.cn/book/6950646725295996940');
+          shell.openExternal('https://github.com/Yeatsczx/ResumeMaking');
         },
       },
     ],
@@ -123,26 +117,26 @@ const customMenu: (MenuItemConstructorOptions | MenuItem)[] = [
       },
     ],
   },
-  {
-    label: '设置',
-    submenu: [
-      {
-        label: '修改简历数据储存路径',
-        click: () => {
-          const wins: MyBrowserWindow[] = BrowserWindow.getAllWindows();
-          const currentWindow = _.find(wins, (w) => w.uid === 'settingWindow');
-          if (currentWindow) {
-            if (!currentWindow.isVisible()) {
-              currentWindow.show();
-            }
-            if (currentWindow.isMinimized()) {
-              currentWindow.restore();
-            }
-          }
-        },
-      },
-    ],
-  },
+  // {
+  //   label: '设置',
+  //   submenu: [
+  //     {
+  //       label: '修改简历数据储存路径',
+  //       click: () => {
+  //         const wins: MyBrowserWindow[] = BrowserWindow.getAllWindows();
+  //         const currentWindow = _.find(wins, (w) => w.uid === 'settingWindow');
+  //         if (currentWindow) {
+  //           if (!currentWindow.isVisible()) {
+  //             currentWindow.show();
+  //           }
+  //           if (currentWindow.isMinimized()) {
+  //             currentWindow.restore();
+  //           }
+  //         }
+  //       },
+  //     },
+  //   ],
+  // },
 ];
 
 if (process.platform === 'darwin') {

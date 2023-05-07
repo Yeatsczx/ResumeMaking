@@ -1,10 +1,3 @@
-/*
- * @Description:
- * @Author: pengdaokuan
- * @LastEditors: pengdaokuan
- * @Date: 2021-06-25 10:27:39
- * @LastEditTime: 2021-06-25 10:39:11
- */
 import React from 'react';
 import LeftComponent from './left';
 import RightComponent from './right';

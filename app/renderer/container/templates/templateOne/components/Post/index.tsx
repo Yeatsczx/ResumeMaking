@@ -1,10 +1,9 @@
 /**
  * @desc 在校经历
- * @author pengdaokuan
+ * @author Yeats
  */
 import { FC } from 'react';
-import styles from './index.scss';
-import CSSModules from 'react-css-modules';
+import './index.scss';
 
 const Post: FC = () => {
   return (
@@ -29,9 +28,9 @@ const Post: FC = () => {
             <p>前端工程师</p>
           </div>
           <div styleName="right">
-            <p>湖南瞎说大学网络中心</p>
+            <p>四川xx大学网络中心</p>
             <p>
-              担任TickNet工作室前端工程师，与湖南瞎说大学网络中心合作，围绕微信企业号开发或主导多个应用，任职期间基于微信企业号开发校内闲余市场，采用Vue.js主导开发，并与湖南xxx科技有限公司合作，主导开发该公司官网及后台管理
+              担任xx工作室前端工程师，与xx大学网络中心合作，围绕微信企业号开发或主导多个应用，任职期间基于微信企业号开发校内闲余市场，采用Vue.js主导开发，并与湖南xxx科技有限公司合作，主导开发该公司官网及后台管理
             </p>
           </div>
         </li>
@@ -40,4 +39,4 @@ const Post: FC = () => {
   );
 };
 
-export default CSSModules(Post, styles);
+export default Post;

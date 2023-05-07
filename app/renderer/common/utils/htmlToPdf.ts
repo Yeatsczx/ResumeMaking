@@ -13,7 +13,7 @@ export function toPrintPdf(resumeName?: string) {
   if (dom) {
     html2canvas(dom, {
       allowTaint: true, // 允许渲染跨域图片
-      scale: window.devicePixelRatio * 3, // 增加清晰度
+      scale: window.devicePixelRatio * 4, // 增加清晰度
     }).then((canvas) => {
       let contentWidth = canvas.width;
       let contentHeight = canvas.height;

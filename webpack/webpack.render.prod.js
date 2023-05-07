@@ -12,9 +12,6 @@ const devConfig = {
     filename: '[name].[hash].js',
     path: path.resolve(__dirname, '../dist'),
   },
-  cache: {
-    type: 'filesystem',
-  },
   module: {
     rules: [
       {
@@ -54,24 +51,19 @@ const devConfig = {
   },
   target: 'electron-renderer',
   devtool: 'inline-source-map',
-  devServer: {
-    compress: true, // 启用压缩
-    host: 'localhost',
-    port: 7001, // 启动端口为 7001 的服务
-    hot: true,
-  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../app/renderer/index.html'),
       filename: path.resolve(__dirname, '../dist/index.html'),
       chunks: ['index'], // 在html文件中引入entry入口中的index中的内容，如果不设置会默认将所有chunks引入，在多入口时会出现问题
     }),
-    // new HtmlWebpackPlugin({
-    //   template: path.resolve(__dirname, '../app/renderer/windowPages/setting/index.html'),
-    //   filename: path.resolve(__dirname, '../dist/setting.html'),
-    //   chunks: ['setting'],
-    // }),
   ],
-  mode: 'development',
+  optimization: {
+    // 代码分割配置
+    splitChunks: {
+      chunks: 'all', // 对所有模块都进行分割
+    },
+  },
+  mode: 'production',
 };
 module.exports = webpackMerge.merge(baseConfig, devConfig);

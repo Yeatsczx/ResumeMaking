@@ -1,6 +1,5 @@
 import { FC } from 'react';
-import CSSModules from 'react-css-modules';
-import styles from './index.scss';
+import './index.scss';
 import { useNavigate } from 'react-router';
 
 const Header: FC = () => {
@@ -15,4 +14,4 @@ const Header: FC = () => {
     </div>
   );
 };
-export default CSSModules(Header, styles);
+export default Header;

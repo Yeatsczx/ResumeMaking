@@ -1,6 +1,6 @@
+/* eslint-disable @typescript-eslint/prefer-optional-chain */
 import React, { FC, useEffect, useState, useMemo, useCallback } from 'react';
-import CSSModules from 'react-css-modules';
-import styles from './index.scss';
+import './index.scss';
 import Left from './Left';
 import Right from './Right';
 import Menu from './Right/Menu';
@@ -31,7 +31,7 @@ const WrapperExperience: FC<IProps> = ({ children, dataList, updateDataList }) =
     showBySave: false, // 编辑下的保存弹窗
     status: false, // 编辑的状态
     tempSaveItem: {}, // 暂时保存的数据
-    onAfterFn: () => {}, // 操作之后的执行方法
+    onAfterFn: () => { }, // 操作之后的执行方法
   });
 
   // 1. 初次当条目列表不为空，默认选中第一条
@@ -79,7 +79,7 @@ const WrapperExperience: FC<IProps> = ({ children, dataList, updateDataList }) =
       deleteIndex: -1,
     });
     setExperienceList(newList);
-    updateDataList && updateDataList(newList);
+    updateDataList?.(newList);
   }, [currentIndex, deleteModal]);
 
   // 5. 切换选中的条目
@@ -246,4 +246,4 @@ const WrapperExperience: FC<IProps> = ({ children, dataList, updateDataList }) =
   );
 };
 
-export default CSSModules(WrapperExperience, styles, { allowMultiple: true });
+export default WrapperExperience;

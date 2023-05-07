@@ -1,10 +1,9 @@
 import { FC, useEffect } from 'react';
-import CSSModules from 'react-css-modules';
-import ReRectSize from '../../common/components/ReRectSize'
+import ReRectSize from '../../common/components/ReRectSize';
 import Header from './Header';
 import Navigation from './Navigation';
 import StaticResume from './StaticResume';
-import styles from './index.scss';
+import './index.scss';
 
 const TemplateList: FC = () => {
   return (
@@ -24,4 +23,4 @@ const TemplateList: FC = () => {
   );
 };
 
-export default CSSModules(TemplateList, styles);
+export default TemplateList;

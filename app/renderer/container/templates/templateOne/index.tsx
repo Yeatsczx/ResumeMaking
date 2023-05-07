@@ -1,10 +1,9 @@
 /**
  * @desc 模板1
- * @author pengdaokuan
+ * @author Yeats
  */
 import { FC } from 'react';
-import CSSModules from 'react-css-modules';
-import styles from './index.scss';
+import './index.scss';
 import Avatar from './components/Avatar';
 import BaseInfo from './components/BaseInfo';
 import Contact from './components/Contact';
@@ -49,4 +48,4 @@ const TemplateOne: FC = () => {
   );
 };
 
-export default CSSModules(TemplateOne, styles, { allowMultiple: true });
+export default TemplateOne;

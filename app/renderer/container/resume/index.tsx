@@ -1,6 +1,5 @@
 import { FC } from 'react';
-import styles from './index.scss';
-import CSSModules from 'react-css-modules';
+import './index.scss';
 import ResumeAction from './ResumeAction';
 import ResumeContent from './ResumeContent';
 import ResumeToolbar from './ResumeToolbar';
@@ -20,4 +19,4 @@ const Resume: FC = () => {
     </div>
   );
 };
-export default CSSModules(Resume, styles);
+export default Resume;

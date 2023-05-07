@@ -2,8 +2,7 @@
  * @description 工作期望Form
  */
 import { FC } from 'react';
-import CSSModules from 'react-css-modules';
-import styles from './index.scss';
+import './index.scss';
 import ReModal from '@common/components/ReModal';
 import ReInput from '@common/components/ReInput';
 import { useSelector } from 'react-redux';
@@ -63,4 +62,4 @@ const Work: FC<IProps> = ({ onClose }) => {
   );
 };
 
-export default CSSModules(Work, styles, { allowMultiple: true });
+export default Work;

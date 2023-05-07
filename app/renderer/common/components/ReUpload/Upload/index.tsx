@@ -1,23 +1,11 @@
 /**
  * @desc 上传控件，默认自带的input样式
- * @author {pengdaokuan}
+ * @author {Yeats}
  */
-import { useRef, FC } from 'react';
-import CSSModules from 'react-css-modules';
-import styles from './index.scss';
-import classnames from 'classnames';
+import { FC } from 'react';
 import FileEvent from '../fileEvent';
 
-const Upload: FC<TSUpload.Input> = ({
-  style,
-  accept,
-  multiple = false,
-  visible = true,
-  onAfterClick,
-  onAfterChange,
-}) => {
-  const inputSelectorRef = useRef(null);
-
+const Upload: FC<TSUpload.Input> = ({ style, accept, multiple = false, onAfterChange }) => {
   function onChange(e: any) {
     const fileList: any = e?.target?.files || [];
     if (e.target.value === '') {
@@ -28,24 +16,10 @@ const Upload: FC<TSUpload.Input> = ({
     for (let file of fileList) {
       instance.push(new FileEvent(file));
     }
-    onAfterChange && onAfterChange(instance);
+    onAfterChange?.(instance);
   }
 
-  return (
-    <input
-      type="file"
-      style={style}
-      accept={accept}
-      multiple={multiple}
-      ref={inputSelectorRef}
-      onClick={onAfterClick}
-      onChange={onChange}
-      className={classnames('my_input_selector', {
-        my_input_selector_visible: visible,
-        my_input_selector_hidden: !visible,
-      })}
-    />
-  );
+  return <input type="file" style={style} accept={accept} multiple={multiple} onChange={onChange} />;
 };
 
-export default CSSModules(Upload, styles);
+export default Upload;

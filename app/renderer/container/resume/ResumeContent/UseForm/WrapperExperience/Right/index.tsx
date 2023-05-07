@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
-import CSSModules from 'react-css-modules';
-import styles from './index.scss';
+import './index.scss';
 import ReScrollBox from '@src/common/components/ReScrollBox';
 
 interface IProps {
@@ -32,4 +31,4 @@ const Right: FC<IProps> = ({ children }) => {
   );
 };
 
-export default CSSModules(Right, styles, { allowMultiple: true });
+export default Right;

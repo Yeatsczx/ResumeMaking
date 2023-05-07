@@ -1,10 +1,3 @@
-/*
- * @Description: 封装fs模块
- * @Author: pengdaokuan
- * @LastEditors: pengdaokuan
- * @Date: 2021-06-25 08:56:12
- * @LastEditTime: 2021-06-25 09:44:16
- */
 import fs, { promises as fsPromiseAPIs } from 'fs';
 
 // Node 10 之后，提供了 fs Promises API

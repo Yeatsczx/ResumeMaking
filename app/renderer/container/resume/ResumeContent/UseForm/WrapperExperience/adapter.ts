@@ -1,6 +1,6 @@
 /**
  * @description 适配器模块
- * @summary 将不同数据适配成 List 组件所需的数据格式
+ * @summary 将不同数据适配成 List 组件所需的数据格式(添加title属性)
  */
 export interface AdapterExperienceType {
   /**

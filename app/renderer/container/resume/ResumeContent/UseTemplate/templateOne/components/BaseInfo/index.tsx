@@ -1,11 +1,10 @@
 /**
  * @desc 基本信息
- * @author pengdaokuan
+ * @author Yeats
  */
 import { FC } from 'react';
 import { useSelector } from 'react-redux';
-import styles from '../../../styles/template-one.scss';
-import CSSModules from 'react-css-modules';
+import '../../../styles/template-one.scss';
 
 const BaseInfo: FC = () => {
   const base: TSResume.Base = useSelector((state: any) => state.resumeModel.base);
@@ -28,4 +27,4 @@ const BaseInfo: FC = () => {
   );
 };
 
-export default CSSModules(BaseInfo, styles);
+export default BaseInfo;

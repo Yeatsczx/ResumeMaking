@@ -1,23 +1,20 @@
 /*
- * @Description:全局配置表
- * @Author: pengdaokuan
- * @LastEditors: pengdaokuan
- * @Date: 2021-07-01 11:07:04
- * @LastEditTime: 2021-07-01 11:10:31
+ * @Description: redux文件内容
+ * @Author: Yeats
  */
 import path from 'path';
 import _ from 'lodash';
 import fileAction from '@common/utils/file';
-import { getAppPath } from '@common/utils/appPath';
+import { getUserStoreDataPath } from '@common/utils/appPath';
 
 /**
- * @description 读取全局配置文件的内容
+ * @description 读取文件的内容
  */
 export function useReadGlobalConfigFile() {
   return () => {
     return new Promise((resolve: (values: { [key: string]: any }) => void, reject: (value: Error) => void) => {
-      getAppPath().then((appPath: string) => {
-        const jsonPath = path.join(appPath, 'appConfig/global.config.json');
+      getUserStoreDataPath().then((appPath: string) => {
+        const jsonPath = path.join(appPath, 'resumeCache/index.json');
         fileAction
           .hasFile(jsonPath)
           .then(async () => {
@@ -25,7 +22,7 @@ export function useReadGlobalConfigFile() {
             resolve(JSON.parse(themeConfigValues));
           })
           .catch(() => {
-            reject(new Error('appConfig does not exist !'));
+            reject(new Error('resumeCache does not exist !'));
           });
       });
     });
@@ -33,29 +30,19 @@ export function useReadGlobalConfigFile() {
 }
 
 /**
- * @description 读取配置文件的内容
+ * @description 更新文件的内容
  * @param {string} updateKey 键
  * @param {any} updateValues 值
  * @param {function} callback 回调函数
  */
 export function useUpdateGlobalConfigFile() {
-  const readGlobalConfigFile = useReadGlobalConfigFile();
-  return (updateKey: string, updateValues: any, callback?: () => void) => {
-    getAppPath().then((appPath: string) => {
-      const jsonPath = path.join(appPath, 'appConfig/global.config.json');
-      readGlobalConfigFile().then((values: { [key: string]: any }) => {
-        if (values && !!Object.keys(values).length) {
-          const nextConfigContent = {
-            ...values,
-            [`${updateKey}`]: updateValues,
-          };
-          fileAction.canWrite(jsonPath).then(() => {
-            // eslint-disable-next-line max-nested-callbacks
-            fileAction.write(jsonPath, JSON.stringify(nextConfigContent), 'utf-8').then(() => {
-              callback && callback();
-            });
-          });
-        }
+  return (resumeCache: any) => {
+    getUserStoreDataPath().then((appPath: string) => {
+      const jsonPath = path.join(appPath, 'resumeCache/index.json');
+      fileAction.canWrite(jsonPath).then(() => {
+        fileAction.write(jsonPath, JSON.stringify(resumeCache), 'utf-8').then(() => {
+          console.log(122);
+        });
       });
     });
   };

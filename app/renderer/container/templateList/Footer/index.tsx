@@ -1,6 +1,5 @@
 import { FC } from 'react';
-import CSSModules from 'react-css-modules';
-import styles from './index.scss';
+import './index.scss';
 import ReButton from '@common/components/ReButton';
 import { useNavigate } from 'react-router';
 import { useSelector } from 'react-redux';
@@ -29,4 +28,4 @@ const Footer: FC = () => {
   );
 };
 
-export default CSSModules(Footer, styles);
+export default Footer;

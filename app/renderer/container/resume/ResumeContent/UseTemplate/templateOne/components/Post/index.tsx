@@ -1,11 +1,10 @@
 /**
  * @desc 在校经历
- * @author pengdaokuan
+ * @author Yeats
  */
 import { FC } from 'react';
 import { useSelector } from 'react-redux';
-import styles from './index.scss';
-import CSSModules from 'react-css-modules';
+import './index.scss';
 
 const Post: FC = () => {
   const schoolExperience: TSResume.SchoolExperience[] = useSelector((state: any) => state.resumeModel.schoolExperience);
@@ -36,4 +35,4 @@ const Post: FC = () => {
   );
 };
 
-export default CSSModules(Post, styles);
+export default Post;

@@ -1,10 +1,5 @@
-/**
- * @desc 模板1
- * @author pengdaokuan
- */
 import { FC } from 'react';
-import CSSModules from 'react-css-modules';
-import styles from './index.scss';
+import './index.scss';
 import Avatar from './components/Avatar';
 import BaseInfo from './components/BaseInfo';
 import Contact from './components/Contact';
@@ -19,7 +14,7 @@ import { useSelector } from 'react-redux';
 import { RESUME_TOOLBAR_MAPS } from '@common/constants/resume';
 
 const TemplateOne: FC = () => {
-  const base: TSResume.Base = useSelector((state: any) => state.resumeModel.base);
+  // const base: TSResume.Base = useSelector((state: any) => state.resumeModel.base);
   const resumeToolbarKeys: string[] = useSelector((state: any) => state.resumeToolbarKeys.resumeToolbarKeys);
   // 必须带有id，以方便导出时获取DOM元素内容
   return (
@@ -40,7 +35,7 @@ const TemplateOne: FC = () => {
         </div>
         {/* 内容 */}
         <div styleName="center">
-          {(resumeToolbarKeys.includes(RESUME_TOOLBAR_MAPS.evaluation) || base?.username) && <Synopsis />}
+          {resumeToolbarKeys.includes(RESUME_TOOLBAR_MAPS.evaluation) && <Synopsis />}
           <div styleName="listData">
             {resumeToolbarKeys.includes(RESUME_TOOLBAR_MAPS.skill) && <Skill />}
             {resumeToolbarKeys.includes(RESUME_TOOLBAR_MAPS.schoolExperience) && <Post />}
@@ -53,4 +48,4 @@ const TemplateOne: FC = () => {
   );
 };
 
-export default CSSModules(TemplateOne, styles, { allowMultiple: true });
+export default TemplateOne;

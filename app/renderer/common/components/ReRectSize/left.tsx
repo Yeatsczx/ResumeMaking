@@ -1,10 +1,3 @@
-/*
- * @Description:
- * @Author: pengdaokuan
- * @LastEditors: pengdaokuan
- * @Date: 2021-06-25 10:27:39
- * @LastEditTime: 2021-06-25 10:40:18
- */
 import React from 'react';
 import classnames from 'classnames';
 import { reducePX, transformStringToNumber } from '@common/utils';
@@ -44,8 +37,7 @@ class LeftComponent extends React.Component<IProps, IState> {
 
   componentDidMount() {
     if (
-      this.boxRef.current &&
-      this.boxRef.current.children &&
+      this.boxRef.current?.children &&
       this.boxRef.current.children.length > 0 &&
       this.boxRef.current.children[0].clientWidth
     ) {

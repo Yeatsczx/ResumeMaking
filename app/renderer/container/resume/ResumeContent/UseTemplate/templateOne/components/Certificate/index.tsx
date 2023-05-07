@@ -1,11 +1,10 @@
 /**
  * @desc 荣誉奖励
- * @author pengdaokuan
+ * @author Yeats
  */
 import { FC } from 'react';
 import { useSelector } from 'react-redux';
-import styles from '../../../styles/template-one.scss';
-import CSSModules from 'react-css-modules';
+import '../../../styles/template-one.scss';
 
 const Certificate: FC = () => {
   const certificate: string = useSelector((state: any) => state.resumeModel.certificate);
@@ -24,4 +23,4 @@ const Certificate: FC = () => {
   );
 };
 
-export default CSSModules(Certificate, styles);
+export default Certificate;

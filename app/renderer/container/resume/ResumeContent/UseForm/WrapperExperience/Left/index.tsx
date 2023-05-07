@@ -2,8 +2,7 @@
  * @description 专门服务于经验弹窗左侧
  */
 import { FC } from 'react';
-import CSSModules from 'react-css-modules';
-import styles from './index.scss';
+import './index.scss';
 import ReButton from '@common/components/ReButton';
 import ReScrollBox from '@src/common/components/ReScrollBox';
 import List, { IListProps } from './List';
@@ -41,4 +40,4 @@ const Left: FC<IProps> = ({ index, experienceList = [], onDelete, onAdd, onChang
   );
 };
 
-export default CSSModules(Left, styles, { allowMultiple: true });
+export default Left;

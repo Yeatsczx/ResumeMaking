@@ -2,8 +2,7 @@
  * @description 教育信息Form
  */
 import { FC } from 'react';
-import CSSModules from 'react-css-modules';
-import styles from './index.scss';
+import './index.scss';
 import ReModal from '@common/components/ReModal';
 import ReInput from '@common/components/ReInput';
 import { useSelector } from 'react-redux';
@@ -111,4 +110,4 @@ const Education: FC<IProps> = ({ onClose }) => {
   );
 };
 
-export default CSSModules(Education, styles, { allowMultiple: true });
+export default Education;
